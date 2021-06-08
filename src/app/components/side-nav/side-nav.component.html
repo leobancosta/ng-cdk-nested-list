@@ -1,0 +1,73 @@
+<div class="menu-main-container">
+    <div class="title">Page Management</div>
+    <br />
+    <div class="row">
+        <div class="col-4">
+            <div class="instructions-title">Instructions</div>
+            <div class="instructions">
+                <p>
+                    Manage your pages and customize the left navigation menu by dragging and dropping
+                    into the desired location
+                </p>
+                <p>
+                    Create headings to better organize pages by clicking the Plus button
+                </p>
+                <p>
+                    The first page will be your default view
+                </p>
+            </div>
+        </div>
+        <div class="col">
+            <div cdkDropList class="menu-container" [cdkDropListData]="categoryMenus"
+                (cdkDropListDropped)="dropGroup($event)">
+                <ul>
+                    <li cdkDropListGroup *ngFor="let menu of categoryMenus; let x = index;" cdkDrag
+                        [cdkDragData]="menu">
+                        <div class="tree">
+                            <div class="row row-header">
+                                <div class="col menu-heading">
+                                    <input type="text" placeholder="{{menu.name}}" [(ngModel)]="menu.name"
+                                        [readonly]="(x===0)" (change)="updateHeader(menu.name,x)" [value]="menu.name"
+                                        maxlength="100" pattern="^[A-Za-z][A-Za-z0-9!@#$%^&* ]*$" required>
+                                </div>
+                                <div class="col buttons buttons-header">
+                                    <button mat-icon-button color="primary" id="btn-add-row" (click)="addMenuHeading()">
+                                        <mat-icon>add</mat-icon>
+                                    </button>
+                                    <button *ngIf="!(x===0) && menu.views" mat-icon-button color="primary">
+                                        <mat-icon>delete</mat-icon>
+                                    </button>
+                                </div>
+                            </div>
+                            <div cdkDropList (cdkDropListDropped)="dropItem($event)" [cdkDropListData]="menu.views"
+                                [cdkDropListConnectedTo]="getConnectedList()">
+                                <ul class="inner-ul">
+                                    <li *ngFor="let item of menu.views; let i = index;" cdkDrag [cdkDragData]="item"
+                                        matElevationDirective (click)="selectItem(item.name)"
+                                        [ngClass]="{'selected-card':selectedItem === item.name}">
+                                        <div class="sidenav-box inner-menu-box row"
+                                            [class.mat-elevation-z8]="(item.id === viewId)">
+                                            <div class="col">
+                                                <input type="text" (change)="updateItem(item.name, i, x);"
+                                                    [value]="item.name" maxlength="100"
+                                                    pattern="^[A-Za-z][A-Za-z0-9!@#$%^&* ]*$" required>
+                                            </div>
+                                        </div>
+                                        <div class="col buttons">
+                                            <button mat-icon-button color="primary">
+                                                <mat-icon>drag_handle</mat-icon>
+                                            </button>
+                                            <button *ngIf="!(x===0 && i===0)" mat-icon-button color="primary">
+                                                <mat-icon>delete</mat-icon>
+                                            </button>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,142 @@
+
+.sidenav-container {
+    width: 400px;
+    max-width: 60%;
+    margin: 0 25px 25px 0;
+    display: inline-block;
+    vertical-align: top;
+ }
+
+.sidenav-list {
+    border: solid 1px #ccc;
+    min-height: 60px;
+    background: white;
+    border-radius: 4px;
+    overflow: hidden;
+    display: block;
+  }
+
+  .sidenav-box {
+    border-bottom: solid 1px #ccc;
+    color: rgba(0, 0, 0, 0.87);
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    box-sizing: border-box;
+    cursor: move;
+    background: white;
+    font-size: 14px;
+  }
+
+  .cdk-drag-preview {
+    box-sizing: border-box;
+    border-radius: 4px;
+    box-shadow: 0 5px 5px -3px rgba(0, 0, 0, 0.2),
+                0 8px 10px 1px rgba(0, 0, 0, 0.14),
+                0 3px 14px 2px rgba(0, 0, 0, 0.12);
+  }
+
+  .cdk-drag-placeholder {
+    opacity: 0;
+  }
+
+  .cdk-drag-animating {
+    transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
+  }
+
+  .sidenav-box:last-child {
+    border: none;
+  }
+
+  .sidenav-list.cdk-drop-list-dragging .sidenav-box:not(.cdk-drag-placeholder) {
+    transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
+  }
+
+.main-content {
+    display: block;
+    margin-top: 10em;
+    margin-left: 40%;
+    margin-right: 40%;
+    width:80%;
+}
+
+li {
+    list-style-type: none;
+    position: relative;
+
+    .button {
+        text-align: end;
+    }
+
+    .buttons-header {
+        border: none;
+    }
+}
+
+.view-item {
+    border: none;
+}
+
+.view-item li.selected {
+    color: #0b3f3c;
+    background: blue;
+}
+
+.view-item li.hover {
+    color: #f4ba51;
+}
+
+
+
+.inner-ul {
+    padding-bottom: 15px;
+
+    li {
+        padding-top: 10px;
+    }
+}
+
+.inner-menu-box {
+    background: white;
+    margin-left: 5px;
+    border-radius: 8px;
+}
+
+.tree li::before,
+.tree li::after {
+    content: '';
+    left: -20px;
+    position: absolute;
+    right: auto;
+}
+
+.tree li::after {
+    border-top: 1px dashed $black;
+    height: 20px;
+    top: 25px;
+    top: 35px;
+    width: 25px;
+}
+
+.tree > ul > li::before,
+.tree > ul > li::after {
+    border: 0;
+}
+
+.tree li:last-child::before {
+    height: 35px;
+}
+
+.row-header {
+    background: $primary-light-grey;
+    height: 50px;
+    border-radius: 8px;
+}
+
+.selected-card {
+    box-shadow: 0 8px 8px 8px rgba(0,0,0,.2), 0 8px 8px 0 rgba(0,0,0,.14), 0 8px 8px 0 rgba(0,0,0,.12) !important;
+    transform: translate3d(0,0,0);
+    transition: background .4s cubic-bezier(.25,.8,.25,1), box-shadow 280ms cubic-bezier(.4,0,.2,1);
+  }
+

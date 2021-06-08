@@ -1,0 +1,4 @@
+<div cdkDropList class="example-list" (cdkDropListDropped)="drop($event)">
+    <app-grid-item *ngFor="let grd of grid" [grid]="grd" (gridDataUpdate)="getGridDataUpdate($event)" cdkDrag>
+    </app-grid-item>
+</div>

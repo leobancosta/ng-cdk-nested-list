@@ -1,0 +1,11 @@
+<div class="container-fluid main-content">
+    <app-grid-list #child (gridOutput)="getEventGrid($event)" [viewId]="viewId"></app-grid-list>
+    <button mat-raised-button color="primary" style="margin-right: 1em;" (click)="confirmDialog()">Save
+        Layout</button>
+    <button mat-raised-button color="warn" (click)="confirmResetDialog()">Reset Layout</button>
+    <p *ngIf="result" style="width: 80%;margin-left: 10em;">
+        {{result | json}}
+    </p>
+    <button id="triggerChildSave" style="visibility: hidden;" (click)="child.saveGrid()"></button>
+    <button id="triggerChildReset" style="visibility: hidden;" (click)="child.resetGrid()"></button>
+</div>
